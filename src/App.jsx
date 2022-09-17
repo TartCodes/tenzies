@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Die from "./Components/Die";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 const App = () => {
 	//function to create new die
