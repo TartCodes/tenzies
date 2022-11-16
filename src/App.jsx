@@ -3,15 +3,20 @@ import Die from "./Components/Die";
 import { nanoid } from "nanoid";
 
 const App = () => {
+	//function to create new die
+	const generateNewDie = () => {
+		return {
+			value: Math.ceil(Math.random() * 6),
+			isHeld: false,
+			id: nanoid()
+		};
+	};
+
 	//function to create an array of 10 nums
 	const allNewDice = () => {
 		const dieArr = [];
 		for (let i = 0; i < 10; i++) {
-			dieArr.push({
-				value: Math.ceil(Math.random() * 6),
-				isHeld: false,
-				id: nanoid()
-			});
+			dieArr.push(generateNewDie());
 		}
 		return dieArr;
 	};
@@ -27,9 +32,13 @@ const App = () => {
 			holdDice={() => holdDice(die.id)}
 		/>
 	));
-	//rerenders allNewDice to act as a roll function
+	//rerenders allNewDice to act as a roll function and keep help die
 	const rollDice = () => {
-		setDice(allNewDice());
+		setDice((oldDice) =>
+			oldDice.map((die) => {
+				return die.isHeld ? die : generateNewDie();
+			})
+		);
 	};
 
 	//hold dice
