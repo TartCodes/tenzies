@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Die from "./Components/Die";
+import { nanoid } from "nanoid";
 
 const App = () => {
   //function to create an array of 10 nums
@@ -9,6 +10,7 @@ const App = () => {
       dieArr.push({
         value: Math.ceil(Math.random() * 6),
         isHeld: false,
+        id: nanoid(),
       });
     }
     return dieArr;
@@ -16,7 +18,12 @@ const App = () => {
 
   //setting set then create the random num elements
   const [dice, setDice] = useState(allNewDice());
-  const diceElements = dice.map((die) => <Die value={die.value} />);
+  const diceElements = dice.map((die) => (
+    <Die
+      key={die.id}
+      value={die.value}
+    />
+  ));
   //rerenders allNewDice to act as a roll function
   const rollDice = () => {
     setDice(allNewDice());
