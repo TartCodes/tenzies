@@ -1,30 +1,23 @@
-// import { useState } from 'react'
-
+import { useState } from "react";
 import Die from "./Components/Die";
 
 const App = () => {
+  //function to create an array of 10 nums
   const allNewDice = () => {
     const dieArr = [];
-    for (let i = 1; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       dieArr.push(Math.ceil(Math.random() * 6));
     }
     return dieArr;
   };
 
+  //setting set then create the random num elements
+  const [dice, setDice] = useState(allNewDice());
+  const diceElements = dice.map((die) => <Die value={die} />);
+
   return (
     <main>
-      <div className="die--grid">
-        <Die value="1" />
-        <Die value="2" />
-        <Die value="3" />
-        <Die value="4" />
-        <Die value="5" />
-        <Die value="6" />
-        <Die value="7" />
-        <Die value="1" />
-        <Die value="1" />
-        <Die value="1" />
-      </div>
+      <div className="die--grid">{diceElements}</div>
     </main>
   );
 };
