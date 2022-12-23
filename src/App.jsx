@@ -3,6 +3,14 @@
 import Die from "./Components/Die";
 
 const App = () => {
+  const allNewDice = () => {
+    const dieArr = [];
+    for (let i = 1; i < 10; i++) {
+      dieArr.push(Math.ceil(Math.random() * 6));
+    }
+    return dieArr;
+  };
+
   return (
     <main>
       <div className="die--grid">
