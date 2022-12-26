@@ -14,10 +14,15 @@ const App = () => {
   //setting set then create the random num elements
   const [dice, setDice] = useState(allNewDice());
   const diceElements = dice.map((die) => <Die value={die} />);
+  //rerenders allNewDice to act as a roll function
+  const rollDice = () => {
+    setDice(allNewDice());
+  };
 
   return (
     <main>
       <div className="die--grid">{diceElements}</div>
+      <button onClick={rollDice}>Roll</button>
     </main>
   );
 };
