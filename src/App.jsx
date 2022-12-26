@@ -6,14 +6,17 @@ const App = () => {
   const allNewDice = () => {
     const dieArr = [];
     for (let i = 0; i < 10; i++) {
-      dieArr.push(Math.ceil(Math.random() * 6));
+      dieArr.push({
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+      });
     }
     return dieArr;
   };
 
   //setting set then create the random num elements
   const [dice, setDice] = useState(allNewDice());
-  const diceElements = dice.map((die) => <Die value={die} />);
+  const diceElements = dice.map((die) => <Die value={die.value} />);
   //rerenders allNewDice to act as a roll function
   const rollDice = () => {
     setDice(allNewDice());
