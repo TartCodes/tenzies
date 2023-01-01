@@ -1,11 +1,24 @@
 // import { useState } from 'react'
 
-function App() {
+import Die from "./Components/Die";
+
+const App = () => {
   return (
     <main>
-      <h1>Hello</h1>
+      <div className="die--grid">
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+        <Die value="1" />
+      </div>
     </main>
   );
-}
+};
 
 export default App;
