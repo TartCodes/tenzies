@@ -18,6 +18,7 @@ const App = () => {
 
 	//setting set then create the random num elements
 	const [dice, setDice] = useState(allNewDice());
+	//create the actual element
 	const diceElements = dice.map((die) => (
 		<Die
 			key={die.id}
@@ -42,6 +43,11 @@ const App = () => {
 
 	return (
 		<main>
+			<h1 className="title">Tenzies</h1>
+			<p className="instructions">
+				Roll until all dice are the same. Click each die to freeze it at its
+				current value between rolls.
+			</p>
 			<div className="die--grid">{diceElements}</div>
 			<button onClick={rollDice}>Roll</button>
 		</main>
