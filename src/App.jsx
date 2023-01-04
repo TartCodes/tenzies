@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Die from "./Components/Die";
 import { nanoid } from "nanoid";
 
@@ -23,6 +23,19 @@ const App = () => {
 
 	//setting set then create the random num elements
 	const [dice, setDice] = useState(allNewDice());
+	//set tenzies win condition
+	const [tenzies, setTenzies] = useState(false);
+	//useEffect to check winning condition
+	useEffect(() => {
+		const allHeld = dice.every((die) => die.isHeld);
+		const firstValue = dice[0].value; //lets us compare values
+		const allSameValue = dice.every((die) => die.value === firstValue);
+		if (allHeld && allSameValue) {
+			setTenzies(true);
+			console.log("You Won!");
+		}
+	}, [dice]);
+
 	//create the actual element
 	const diceElements = dice.map((die) => (
 		<Die
