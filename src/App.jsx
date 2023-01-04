@@ -46,13 +46,18 @@ const App = () => {
 			holdDice={() => holdDice(die.id)}
 		/>
 	));
-	//rerenders allNewDice to act as a roll function and keep help die
+	//rerenders allNewDice on condition or starts new game
 	const rollDice = () => {
-		setDice((oldDice) =>
-			oldDice.map((die) => {
-				return die.isHeld ? die : generateNewDie();
-			})
-		);
+		if (!tenzies) {
+			setDice((oldDice) =>
+				oldDice.map((die) => {
+					return die.isHeld ? die : generateNewDie();
+				})
+			);
+		} else {
+			setTenzies(false);
+			setDice(allNewDice());
+		}
 	};
 
 	//hold dice
