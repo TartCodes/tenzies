@@ -23,11 +23,21 @@ const App = () => {
 			key={die.id}
 			value={die.value}
 			isHeld={die.isHeld}
+			holdDice={() => holdDice(die.id)}
 		/>
 	));
 	//rerenders allNewDice to act as a roll function
 	const rollDice = () => {
 		setDice(allNewDice());
+	};
+
+	//hold dice
+	const holdDice = (id) => {
+		setDice((oldDice) =>
+			oldDice.map((die) => {
+				return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+			})
+		);
 	};
 
 	return (

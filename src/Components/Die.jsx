@@ -7,6 +7,7 @@ const Die = (props) => {
 		<div
 			style={styles}
 			className="die"
+			onClick={props.holdDice}
 		>
 			<h2 className="die-num">{props.value}</h2>
 		</div>
